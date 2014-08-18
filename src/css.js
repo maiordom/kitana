@@ -1,11 +1,8 @@
-var CSS =
-{
-    elemRect: function( elem, ignore_scroll )
-    {
+var CSS = {
+    elemRect: function( elem, ignore_scroll ) {
         var rect = elem.getBoundingClientRect(), result = {};
 
-        result =
-        {
+        result = {
             top:    rect.top | 0,
             left:   rect.left | 0,
             right:  rect.right | 0,
@@ -22,12 +19,10 @@ var CSS =
         return result;
     },
 
-    offset: function( elem )
-    {
+    offset: function( elem ) {
         var left = 0, top = 0;
 
-        while ( elem )
-        {
+        while ( elem ) {
             left += ( elem.offsetLeft - elem.scrollLeft + elem.clientLeft );
             top  += ( elem.offsetTop  - elem.scrollTop  + elem.clientTop );
             elem = elem.offsetParent;
@@ -36,31 +31,25 @@ var CSS =
         return { left: left, top: top };
     },
 
-    outerWidth: function( elem )
-    {
+    outerWidth: function( elem ) {
         return elem.offsetWidth;
     },
 
-    outerHeight: function( elem )
-    {
+    outerHeight: function( elem ) {
         return elem.offsetHeight;
     },
 
-    css: function( elem, style )
-    {
-        for ( var i in style )
-        {
+    css: function( elem, style ) {
+        for ( var i in style ) {
             elem.style[ i ] = style[ i ];
         }
     },
 
-    hasClass: function( elem, class_name )
-    {
+    hasClass: function( elem, class_name ) {
         return elem.className.match( new RegExp( "(\\s|^)" + class_name + "(\\s|$)" ) );
     },
 
-    addClass: function( elem, class_name )
-    {
+    addClass: function( elem, class_name ) {
         if ( this.hasClass( elem, class_name ) ) { return false; }
 
         var re = new RegExp( "(^|\\s)" + class_name + "(\\s|$)", "g" );
@@ -70,8 +59,7 @@ var CSS =
         elem.className = ( elem.className + " " + class_name ).replace( /\s+/g, " " ).replace( /(^ | $)/g, "" );
     },
 
-    removeClass: function ( elem, class_name )
-    {
+    removeClass: function ( elem, class_name ) {
         if ( !this.hasClass( elem, class_name ) ) { return false; }
 
         var re = new RegExp( "(^|\\s)" + class_name + "(\\s|$)", "g" );
